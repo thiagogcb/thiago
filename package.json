@@ -1,0 +1,32 @@
+# package.json
+
+```json
+{
+  "name": "bancada-os",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {"dev":"vite","build":"vite build"},
+  "dependencies": {"react":"^18","react-dom":"^18","@supabase/supabase-js":"^2","jspdf":"^2.5.1"},
+  "devDependencies": {"vite":"^5"}
+}
+```
+
+# index.html
+
+```html
+<!doctype html><html><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>
+```
+
+# src/main.jsx
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+```
+
+# src/App.jsx
+
+Copie o código completo do canvas do sistema atual e cole nesse arquivo.
