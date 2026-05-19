@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function App() {
-  const [ordens, setOrdens] = useState([])
+  const [ordens, setOrdens] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('ordens') || '[]') }
+    catch { return [] }
+  })
   const [cliente, setCliente] = useState('')
   const [equipamento, setEquipamento] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('ordens', JSON.stringify(ordens))
+  }, [ordens])
 
   function salvar() {
     if (!cliente || !equipamento) return
@@ -18,7 +25,7 @@ export default function App() {
   return (
     <div style={{ fontFamily:'Arial', padding:20, maxWidth:900, margin:'0 auto' }}>
       <h1>Bancada OS</h1>
-      <p>Sistema online</p>
+      <p>Ordens persistentes</p>
 
       <div style={{ display:'flex', gap:10, marginBottom:20, flexWrap:'wrap' }}>
         <input value={cliente} onChange={e=>setCliente(e.target.value)} placeholder="Cliente" />
